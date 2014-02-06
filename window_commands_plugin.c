@@ -316,6 +316,9 @@ plugin_unload(PurplePlugin *plugin)
 {
     purple_cmd_unregister(size_command_id);
     purple_cmd_unregister(alloc_command_id);
+    purple_cmd_unregister(fullscreen_command_id);
+    purple_cmd_unregister(exit_fullscreen_command_id);
+    purple_cmd_unregister(backgroundcolor_command_id);
   /* Just return true to tell libpurple to finish unloading. */
   return TRUE;
 }
