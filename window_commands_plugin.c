@@ -314,9 +314,9 @@ plugin_load(PurplePlugin *plugin)
 static gboolean
 plugin_unload(PurplePlugin *plugin)
 {
-  	 purple_cmd_unregister(size_command_id);
-  	 purple_cmd_unregister(alloc_command_id);
-  	/* Just return true to tell libpurple to finish unloading. */
+    purple_cmd_unregister(size_command_id);
+    purple_cmd_unregister(alloc_command_id);
+  /* Just return true to tell libpurple to finish unloading. */
   return TRUE;
 }
 
