@@ -227,13 +227,13 @@ plugin_load(PurplePlugin *plugin)
     gchar *exit_fullscreen_help = NULL;
     gchar *backgroundcolor_help = NULL;  
 
-  	command_example = plugin;
+  	 command_example = plugin;
 
-  	size_help = "notify &lt;notify word here&gt;: Notifies the conversation window size";
-  	// Registers a command to allow a user to enter /size some word and have
-  	// This command runs with high priority,
-  	// and can be used in both group and standard chat messages 
-  	size_command_id = purple_cmd_register
+  	 size_help = "notify &lt;notify word here&gt;: Notifies the conversation window size";
+  	 // Registers a command to allow a user to enter /size some word and have
+  	 // This command runs with high priority,
+  	 // and can be used in both group and standard chat messages 
+  	 size_command_id = purple_cmd_register
     ("size",                      /* command name */ 
      "w",                         /* command argument format */
      PURPLE_CMD_P_HIGH,           /* command priority flags */  
@@ -246,10 +246,10 @@ plugin_load(PurplePlugin *plugin)
      NULL                         /* Any special user-defined data */
      );
 
-  	alloc_help = "notify &lt;notify word here&gt;:  Let's you change the size of the conversation window.";
-  	// Registers a command to allow a user to enter /allocate width:height and have
-  	// that word notify the dimensions of the Pidgin window to them.  
-  	alloc_command_id = purple_cmd_register
+  	 alloc_help = "notify &lt;notify word here&gt;:  Let's you change the size of the conversation window.";
+  	 // Registers a command to allow a user to enter /allocate width:height and have
+  	 // that word notify the dimensions of the Pidgin window to them.  
+  	 alloc_command_id = purple_cmd_register
     ("allocate",                  /* command name */ 
      "w",                         /* command argument format */
      PURPLE_CMD_P_HIGH,           /* command priority flags */  
@@ -261,9 +261,9 @@ plugin_load(PurplePlugin *plugin)
      NULL                         /* Any special user-defined data */
      );
 
-  	fullscreen_help = "notify &lt;notify word here&gt;:  Let's you change the size of the conversation window to fullscreen.";
-  	// Registers a command to allow a user to enter /fullscreen  
-  	fullscreen_command_id = purple_cmd_register
+  	 fullscreen_help = "notify &lt;notify word here&gt;:  Let's you change the size of the conversation window to fullscreen.";
+  	 // Registers a command to allow a user to enter /fullscreen  
+  	 fullscreen_command_id = purple_cmd_register
     ("fullscreen",                           /* command name */ 
      "w",                                    /* command argument format */
      PURPLE_CMD_P_HIGH,                      /* command priority flags */  
@@ -276,9 +276,9 @@ plugin_load(PurplePlugin *plugin)
      NULL                                     /* Any special user-defined data */
      );
   
-  	exit_fullscreen_help = "notify &lt;notify word here&gt;:  Let's you exit fullscreen.";
-  	// Registers a command to allow a user to enter /exit fullscreen 
-  	exit_fullscreen_command_id = purple_cmd_register
+  	 exit_fullscreen_help = "notify &lt;notify word here&gt;:  Let's you exit fullscreen.";
+  	 // Registers a command to allow a user to enter /exit fullscreen 
+  	 exit_fullscreen_command_id = purple_cmd_register
     ("exit",                                  /* command name */ 
      "w",                                     /* command argument format */
      PURPLE_CMD_P_HIGH,                       /* command priority flags */  
@@ -290,10 +290,10 @@ plugin_load(PurplePlugin *plugin)
      NULL                                     /* Any special user-defined data */
      );
 
-  	backgroundcolor_help = "notify &lt;notify word here&gt;:  Let's you change the conversation window background color.";
-  	// Registers a command to allow a user to enter /backgroundcolor. This command runs with high priority,
-  	// and can be used in both group and standard chat messages 
-  	backgroundcolor_command_id = purple_cmd_register
+  	 backgroundcolor_help = "notify &lt;notify word here&gt;:  Let's you change the conversation window background color.";
+  	 // Registers a command to allow a user to enter /backgroundcolor. This command runs with high priority,
+  	 // and can be used in both group and standard chat messages 
+  	 backgroundcolor_command_id = purple_cmd_register
     ("backgroundcolor",                       /* command name */ 
      "w",                                     /* command argument format */
      PURPLE_CMD_P_HIGH,                       /* command priority flags */  
@@ -314,8 +314,8 @@ plugin_load(PurplePlugin *plugin)
 static gboolean
 plugin_unload(PurplePlugin *plugin)
 {
-  	purple_cmd_unregister(size_command_id);
-  	purple_cmd_unregister(alloc_command_id);
+  	 purple_cmd_unregister(size_command_id);
+  	 purple_cmd_unregister(alloc_command_id);
   	/* Just return true to tell libpurple to finish unloading. */
   return TRUE;
 }
