@@ -234,31 +234,31 @@ plugin_load(PurplePlugin *plugin)
     // This command runs with high priority,
     // and can be used in both group and standard chat messages 
     size_command_id = purple_cmd_register
-    ("size",                      /* command name */ 
-     "w",                         /* command argument format */
-     PURPLE_CMD_P_HIGH,           /* command priority flags */  
+    ("size",                                /* command name */ 
+     "w",                                   /* command argument format */
+     PURPLE_CMD_P_HIGH,                     /* command priority flags */  
      PURPLE_CMD_FLAG_IM | 
      PURPLE_CMD_FLAG_CHAT |
-     PURPLE_CMD_FLAG_ALLOW_WRONG_ARGS,        /* command usage flags */
-     PLUGIN_ID,                   /* Plugin ID */
-     size_cb,                     /* Callback function */
-     size_help,                   /* Help message */
-     NULL                         /* Any special user-defined data */
+     PURPLE_CMD_FLAG_ALLOW_WRONG_ARGS,       /* command usage flags */
+     PLUGIN_ID,                              /* Plugin ID */
+     size_cb,                                /* Callback function */
+     size_help,                              /* Help message */
+     NULL                                    /* Any special user-defined data */
      );
 
     alloc_help = "notify &lt;notify word here&gt;:  Let's you change the size of the conversation window.";
     // Registers a command to allow a user to enter /allocate width:height and have
     // that word notify the dimensions of the Pidgin window to them.  
     alloc_command_id = purple_cmd_register
-    ("allocate",                  /* command name */ 
-     "w",                         /* command argument format */
-     PURPLE_CMD_P_HIGH,           /* command priority flags */  
+    ("allocate",                             /* command name */ 
+     "w",                                    /* command argument format */
+     PURPLE_CMD_P_HIGH,                      /* command priority flags */  
      PURPLE_CMD_FLAG_IM | 
-     PURPLE_CMD_FLAG_CHAT,        /* command usage flags */
-     PLUGIN_ID,                   /* Plugin ID */
-     alloc_cb,                    /* Callback function */
-     alloc_help,                  /* Help message */
-     NULL                         /* Any special user-defined data */
+     PURPLE_CMD_FLAG_CHAT,                   /* command usage flags */
+     PLUGIN_ID,                              /* Plugin ID */
+     alloc_cb,                               /* Callback function */
+     alloc_help,                             /* Help message */
+     NULL                                    /* Any special user-defined data */
      );
 
     fullscreen_help = "notify &lt;notify word here&gt;:  Let's you change the size of the conversation window to fullscreen.";
@@ -330,11 +330,11 @@ static PurplePluginInfo info = {
     NULL,                       /* dependencies */
     PURPLE_PRIORITY_DEFAULT,    /* priority */
     PLUGIN_ID,                  /* id */
-    "Window Commands",      /* name */
+    "Window Commands",          /* name */
     "1.0",                      /* version */
     "Helps you carry out a number of commands on the conversation window.",      /* summary */
     "The commands should be entered in the entry area.",                         /* description */
-    PLUGIN_AUTHOR,             /* author */
+    PLUGIN_AUTHOR,              /* author */
     "ahujapooja.com",           /* homepage */
 
     plugin_load,                /* load */
