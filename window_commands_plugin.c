@@ -51,7 +51,7 @@
 #include<string.h>
 #include<gtk/gtk.h>
 
-#define PLUGIN_ID "core-commandsize"
+#define PLUGIN_ID "core-windowcommand"
 
 #define PLUGIN_AUTHOR "Pooja Ahuja <ahuja.pooja22@gmail.com>"
 
@@ -200,7 +200,7 @@ backgroundcolor_cb(PurpleConversation *conv, const gchar *cmd, gchar **args, gch
         gtk_color_selection_get_current_color(colorsel,&color);
         color_string = g_strdup_printf("document.body.style.background = '#%02X%02X%02X'", 
 			 										color.red / 256, color.green / 256, color.blue /256);
-        purple_debug_info("pats", "executing script: %s\n", color_string);
+        purple_debug_info("window_commands_plugin", "executing script: %s\n", color_string);
         gtk_webview_safe_execute_script(GTK_WEBVIEW(gtkconv->webview), color_string);
         g_free(color_string);
       } 
@@ -212,7 +212,7 @@ backgroundcolor_cb(PurpleConversation *conv, const gchar *cmd, gchar **args, gch
 
         color_string = g_strdup_printf("document.body.style.background = '%s'", 
 			 										 color_input);
-        purple_debug_info("pats", "executing script: %s\n", color_string);
+        purple_debug_info("window_commands_plugin", "executing script: %s\n", color_string);
         gtk_webview_safe_execute_script(GTK_WEBVIEW(gtkconv->webview), color_string);
      }
    return PURPLE_CMD_RET_OK;
@@ -221,19 +221,19 @@ backgroundcolor_cb(PurpleConversation *conv, const gchar *cmd, gchar **args, gch
 static gboolean
 plugin_load(PurplePlugin *plugin)
 {
-  gchar *size_help = NULL;
-  gchar *alloc_help = NULL;
-  gchar *fullscreen_help = NULL;
-  gchar *exit_fullscreen_help = NULL;
-  gchar *backgroundcolor_help = NULL;  
+    gchar *size_help = NULL;
+    gchar *alloc_help = NULL;
+    gchar *fullscreen_help = NULL;
+    gchar *exit_fullscreen_help = NULL;
+    gchar *backgroundcolor_help = NULL;  
 
-  command_example = plugin;
+  	command_example = plugin;
 
-  size_help = "notify &lt;notify word here&gt;: Notifies the conversation window size";
-  // Registers a command to allow a user to enter /size some word and have
-  // This command runs with high priority,
-  // and can be used in both group and standard chat messages 
-  size_command_id = purple_cmd_register
+  	size_help = "notify &lt;notify word here&gt;: Notifies the conversation window size";
+  	// Registers a command to allow a user to enter /size some word and have
+  	// This command runs with high priority,
+  	// and can be used in both group and standard chat messages 
+  	size_command_id = purple_cmd_register
     ("size",                      /* command name */ 
      "w",                         /* command argument format */
      PURPLE_CMD_P_HIGH,           /* command priority flags */  
@@ -246,10 +246,10 @@ plugin_load(PurplePlugin *plugin)
      NULL                         /* Any special user-defined data */
      );
 
-  alloc_help = "notify &lt;notify word here&gt;:  Let's you change the size of the conversation window.";
-  // Registers a command to allow a user to enter /allocate width:height and have
-  // that word notify the dimensions of the Pidgin window to them.  
-  alloc_command_id = purple_cmd_register
+  	alloc_help = "notify &lt;notify word here&gt;:  Let's you change the size of the conversation window.";
+  	// Registers a command to allow a user to enter /allocate width:height and have
+  	// that word notify the dimensions of the Pidgin window to them.  
+  	alloc_command_id = purple_cmd_register
     ("allocate",                  /* command name */ 
      "w",                         /* command argument format */
      PURPLE_CMD_P_HIGH,           /* command priority flags */  
@@ -261,9 +261,9 @@ plugin_load(PurplePlugin *plugin)
      NULL                         /* Any special user-defined data */
      );
 
-  fullscreen_help = "notify &lt;notify word here&gt;:  Let's you change the size of the conversation window to fullscreen.";
-  // Registers a command to allow a user to enter /fullscreen  
-  fullscreen_command_id = purple_cmd_register
+  	fullscreen_help = "notify &lt;notify word here&gt;:  Let's you change the size of the conversation window to fullscreen.";
+  	// Registers a command to allow a user to enter /fullscreen  
+  	fullscreen_command_id = purple_cmd_register
     ("fullscreen",                  /* command name */ 
      "w",                         /* command argument format */
      PURPLE_CMD_P_HIGH,           /* command priority flags */  
@@ -276,9 +276,9 @@ plugin_load(PurplePlugin *plugin)
      NULL                         /* Any special user-defined data */
      );
   
-  exit_fullscreen_help = "notify &lt;notify word here&gt;:  Let's you exit fullscreen.";
-  // Registers a command to allow a user to enter /exit fullscreen 
-  exit_fullscreen_command_id = purple_cmd_register
+  	exit_fullscreen_help = "notify &lt;notify word here&gt;:  Let's you exit fullscreen.";
+  	// Registers a command to allow a user to enter /exit fullscreen 
+  	exit_fullscreen_command_id = purple_cmd_register
     ("exit",                  /* command name */ 
      "w",                         /* command argument format */
      PURPLE_CMD_P_HIGH,           /* command priority flags */  
@@ -290,10 +290,10 @@ plugin_load(PurplePlugin *plugin)
      NULL                         /* Any special user-defined data */
      );
 
-  backgroundcolor_help = "notify &lt;notify word here&gt;:  Let's you change the conversation window background color.";
-  // Registers a command to allow a user to enter /backgroundcolor. This command runs with high priority,
-  // and can be used in both group and standard chat messages 
-  backgroundcolor_command_id = purple_cmd_register
+  	backgroundcolor_help = "notify &lt;notify word here&gt;:  Let's you change the conversation window background color.";
+  	// Registers a command to allow a user to enter /backgroundcolor. This command runs with high priority,
+  	// and can be used in both group and standard chat messages 
+  	backgroundcolor_command_id = purple_cmd_register
     ("backgroundcolor",                  /* command name */ 
      "w",                         /* command argument format */
      PURPLE_CMD_P_HIGH,           /* command priority flags */  
@@ -314,42 +314,41 @@ plugin_load(PurplePlugin *plugin)
 static gboolean
 plugin_unload(PurplePlugin *plugin)
 {
-  purple_cmd_unregister(size_command_id);
-  purple_cmd_unregister(alloc_command_id);
-  /* Just return true to tell libpurple to finish unloading. */
+  	purple_cmd_unregister(size_command_id);
+  	purple_cmd_unregister(alloc_command_id);
+  	/* Just return true to tell libpurple to finish unloading. */
   return TRUE;
 }
 
 static PurplePluginInfo info = {
-        PURPLE_PLUGIN_MAGIC,        /* magic number */
-        PURPLE_MAJOR_VERSION,       /* purple major */
-        PURPLE_MINOR_VERSION,       /* purple minor */
-        PURPLE_PLUGIN_STANDARD,     /* plugin type */
-        NULL,                       /* UI requirement */
-        0,                          /* flags */
-        NULL,                       /* dependencies */
-        PURPLE_PRIORITY_DEFAULT,    /* priority */
+    PURPLE_PLUGIN_MAGIC,        /* magic number */
+    PURPLE_MAJOR_VERSION,       /* purple major */
+    PURPLE_MINOR_VERSION,       /* purple minor */
+    PURPLE_PLUGIN_STANDARD,     /* plugin type */
+    NULL,                       /* UI requirement */
+    0,                          /* flags */
+    NULL,                       /* dependencies */
+    PURPLE_PRIORITY_DEFAULT,    /* priority */
+    PLUGIN_ID,                  /* id */
+    "Window Commands",      /* name */
+    "1.0",                      /* version */
+    "Helps you carry out a number of commands on the conversation window.",      /* summary */
+    "The commands should be entered in the entry area.",                           /* description */
+    PLUGIN_AUTHOR,             /* author */
+    "ahujapooja.com",           /* homepage */
 
-        PLUGIN_ID,                  /* id */
-        "Window Commands",      /* name */
-        "1.0",                      /* version */
-        "Helps you carry out a number of commands on the conversation window.",      /* summary */
-        "The commands should be entered in the entry area.",                           /* description */
-         PLUGIN_AUTHOR,             /* author */
-        "ahujapooja.com",           /* homepage */
+    plugin_load,                /* load */
+    plugin_unload,              /* unload */
+    NULL,                       /* destroy */
 
-        plugin_load,                /* load */
-        plugin_unload,              /* unload */
-        NULL,                       /* destroy */
-
-        NULL,                       /* ui info */
-        NULL,                       /* extra info */
-        NULL,                       /* prefs info */
-        NULL,                       /* actions */
-        NULL,                       /* reserved */
-        NULL,                       /* reserved */
-        NULL,                       /* reserved */
-        NULL                        /* reserved */
+    NULL,                       /* ui info */
+    NULL,                       /* extra info */
+    NULL,                       /* prefs info */
+    NULL,                       /* actions */
+    NULL,                       /* reserved */
+    NULL,                       /* reserved */
+    NULL,                       /* reserved */
+    NULL                        /* reserved */
 };
 
 static void
