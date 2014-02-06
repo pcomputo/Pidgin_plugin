@@ -1,0 +1,18 @@
+The set of commands to be entered in the text area are:
+
+cmd: /size
+This command pops up a notification with the current height and width of the Pidgin conversation window. 
+
+cmd: /allocate width:height
+This command resizes the conversation window as per user input.
+ * eg: /allocate 600:500 
+
+cmd: /fullscreen
+This command asks to place the window in fullscreen state. 
+
+cmd: /exit fullscreen
+Asks to toggle off the fullscreen state for conversation window.
+
+cmd: /backgroundcolor or /backgroundcolor <hexadecimal notation>
+Asks to toggle off the fullscreen state for conversation window.
+ * eg: /backgroundcolor #565656 or /backgroundcolor
